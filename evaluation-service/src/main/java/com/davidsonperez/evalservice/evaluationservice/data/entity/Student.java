@@ -30,6 +30,6 @@ public class Student implements Serializable {
     private String name;
     @Column(nullable = false)
     private String email;
-    private Float qualification;
+    private Double qualification;
     private Exam exam;
 }

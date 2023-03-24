@@ -1,23 +1,39 @@
 package com.davidsonperez.evalservice.evaluationservice.service;
 
-import java.util.ArrayList;
-
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.davidsonperez.evalservice.evaluationservice.data.entity.Student;
-import com.davidsonperez.evalservice.evaluationservice.data.repository.StudentRep;
+import com.davidsonperez.evalservice.evaluationservice.data.repository.StudentRepository;
+import com.davidsonperez.evalservice.evaluationservice.web.dto.StudentDto;
+import com.davidsonperez.evalservice.evaluationservice.web.mapper.StudentMapper;
 
 @Service
 public class StudentService {
-    @Autowired
-    StudentRep studentRep;
+    private StudentRepository studentRepository;
+    //private ModelMapper modelMapper;
 
-    public ArrayList<Student> getStudents() {
-        return (ArrayList<Student>) studentRep.findAll();
+    public StudentService(StudentRepository studentRepository/* , ModelMapper modelMapper*/) {
+        this.studentRepository = studentRepository;
+        //this.modelMapper = modelMapper;
     }
 
-    public Student saveStudentExam(Student student) {
-        return studentRep.save(student);
+    public StudentDto saveStudent(StudentDto studentDto) throws Exception {
+        if (studentDto == null) {
+            throw new Exception("Parámetro no válido");
+        }
+        else if (studentDto.getIdCard() == null || studentDto.getIdCard().isEmpty()) {
+            throw new Exception("Hace falta la identificación del estudiante");
+        }
+        else if (studentDto.getName() == null || studentDto.getName().isEmpty()) {
+            throw new Exception("Hace falta el nombre del estudiante");
+        }
+        else if (studentDto.getEmail() == null || studentDto.getEmail().isEmpty()) {
+            throw new Exception("Hace falta el correo del estudiante");
+        }
+        
+        Student eStudent = StudentMapper.INSTANCE.studentDtoToStudent(studentDto);
+        eStudent = studentRepository.save(eStudent);
+        return StudentMapper.INSTANCE.studentToStudentDto(eStudent);
     }
 }

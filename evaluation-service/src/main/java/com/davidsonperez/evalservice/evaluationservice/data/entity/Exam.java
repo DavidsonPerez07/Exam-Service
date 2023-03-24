@@ -24,12 +24,8 @@ public class Exam implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long examId;
-    private String description;
-    private Float maxQual;
-    private Float finalQual;
+    private String introduction;
+    private Double maxScore;
+    private String examLink;
     private List<Question> questions;
-
-    public void addQuestion(Question question) {
-        questions.add(question);
-    }
 }

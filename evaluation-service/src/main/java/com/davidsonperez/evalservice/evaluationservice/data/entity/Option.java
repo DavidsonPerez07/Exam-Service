@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Question {
+public class Option {
     private String description;
-    private Double assessment;
+    private Boolean validity;
 }

@@ -1,30 +1,35 @@
 package com.davidsonperez.evalservice.evaluationservice.web.controller;
 
-import java.util.ArrayList;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.davidsonperez.evalservice.evaluationservice.data.entity.Exam;
 import com.davidsonperez.evalservice.evaluationservice.service.ExamService;
+import com.davidsonperez.evalservice.evaluationservice.web.dto.ExamDto;
 
 @RestController
 @RequestMapping("exam")
 public class ExamController {
-    @Autowired
-    ExamService examService;
+    private ExamService examService;
 
-    @GetMapping()
-    public ArrayList<Exam> getExams() {
-        return examService.getExams();
+    public ExamController(ExamService examService) {
+        this.examService = examService;
     }
 
     @PostMapping()
-    public Exam saveExam(@RequestBody Exam exam) {
-        return this.examService.createExam(exam);
+    public ResponseEntity<?> insert(@RequestBody ExamDto examDto) throws Exception {
+        if (examDto == null) {
+            return ResponseEntity.badRequest().body("Datos del examen inválidos");
+        }
+
+        ExamDto resp;
+        try {
+            resp = examService.saveExam(examDto);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
     }
 }

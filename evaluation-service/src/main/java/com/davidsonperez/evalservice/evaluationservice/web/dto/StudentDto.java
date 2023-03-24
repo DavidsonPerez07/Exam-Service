@@ -14,7 +14,7 @@ public class StudentDto {
     private String idCard;
     private String name;
     private String email;
-    private Float qualification;
+    private Double qualification;
     private Exam exam;
     
     public Long getId() {
@@ -41,10 +41,10 @@ public class StudentDto {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Float getQualification() {
+    public Double getQualification() {
         return qualification;
     }
-    public void setQualification(Float qualification) {
+    public void setQualification(Double qualification) {
         this.qualification = qualification;
     }
     public Exam getExam() {

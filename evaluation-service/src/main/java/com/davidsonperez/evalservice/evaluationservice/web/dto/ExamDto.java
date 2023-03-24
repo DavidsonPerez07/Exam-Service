@@ -12,37 +12,37 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ExamDto {
-    private String description;
-    private Float maxQual;
-    private Float finalQual;
+    private Long examId;
+    private String introduction;
+    private Double maxScore;
     private List<Question> questions;
+
+    public Long getExamId() {
+        return examId;
+    }
+
+    public void setExamId(Long examId) {
+        this.examId = examId;
+    }
 
     public void addQuestion(Question question) {
         questions.add(question);
     }
 
-    public String getDescription() {
-        return description;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
-    public Float getMaxQual() {
-        return maxQual;
+    public Double getMaxScore() {
+        return maxScore;
     }
 
-    public void setMaxQual(Float maxQual) {
-        this.maxQual = maxQual;
-    }
-
-    public Float getFinalQual() {
-        return finalQual;
-    }
-
-    public void setFinalQual(Float finalQual) {
-        this.finalQual = finalQual;
+    public void setMaxScore(Double maxScore) {
+        this.maxScore = maxScore;
     }
 
     public List<Question> getQuestions() {
