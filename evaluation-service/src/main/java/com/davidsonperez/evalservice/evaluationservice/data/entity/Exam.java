@@ -1,7 +1,6 @@
 package com.davidsonperez.evalservice.evaluationservice.data.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
