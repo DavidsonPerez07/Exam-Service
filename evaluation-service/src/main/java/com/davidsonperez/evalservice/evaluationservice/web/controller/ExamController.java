@@ -19,7 +19,7 @@ public class ExamController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> insert(@RequestBody ExamDto examDto) throws Exception {
+    public ResponseEntity<?> insertExam(@RequestBody ExamDto examDto) throws Exception {
         if (examDto == null) {
             return ResponseEntity.badRequest().body("Datos del examen inválidos");
         }

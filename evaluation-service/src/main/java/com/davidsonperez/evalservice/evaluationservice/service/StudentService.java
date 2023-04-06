@@ -11,11 +11,9 @@ import com.davidsonperez.evalservice.evaluationservice.web.mapper.StudentMapper;
 @Service
 public class StudentService {
     private StudentRepository studentRepository;
-    //private ModelMapper modelMapper;
 
-    public StudentService(StudentRepository studentRepository/* , ModelMapper modelMapper*/) {
+    public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
-        //this.modelMapper = modelMapper;
     }
 
     public StudentDto saveStudent(StudentDto studentDto) throws Exception {

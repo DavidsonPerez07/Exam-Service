@@ -11,11 +11,9 @@ import com.davidsonperez.evalservice.evaluationservice.web.mapper.ExamMapper;
 @Service
 public class ExamService {
     private ExamRepository examRepository;
-    //private ModelMapper modelMapper;
 
-    public ExamService(ExamRepository examRepository/*, ModelMapper modelMapper*/) {
+    public ExamService(ExamRepository examRepository) {
         this.examRepository = examRepository;
-        //this.modelMapper = modelMapper;
     }
 
     public ExamDto saveExam(ExamDto examDto) throws Exception {
