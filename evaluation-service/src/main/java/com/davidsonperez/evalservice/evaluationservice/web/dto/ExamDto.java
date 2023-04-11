@@ -1,8 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.web.dto;
 
+import java.io.Serializable;
 import java.util.List;
-
-import com.davidsonperez.evalservice.evaluationservice.data.entity.Question;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,11 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class ExamDto {
+public class ExamDto implements Serializable {
     private Long examId;
     private String introduction;
     private Double maxScore;
     private String examLink;
-    private List<Question> questions;
-
+    private List<QuestionDto> questions;
 }

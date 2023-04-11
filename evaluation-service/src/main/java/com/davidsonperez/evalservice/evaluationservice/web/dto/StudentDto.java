@@ -1,5 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.web.dto;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class StudentDto {
+public class StudentDto implements Serializable {
     private Long id;
     private String idCard;
     private String name;
