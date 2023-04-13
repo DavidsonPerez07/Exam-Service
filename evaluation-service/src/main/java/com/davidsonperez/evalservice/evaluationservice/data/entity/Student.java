@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idStudent;
     @Column(nullable = false)
     private String idCard;
     @Column(nullable = false)

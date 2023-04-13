@@ -1,5 +1,6 @@
 package com.davidsonperez.evalservice.evaluationservice.web.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.davidsonperez.evalservice.evaluationservice.data.entity.QuestionType;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class QuestionDto {
+public class QuestionDto implements Serializable {
     private Long questionId;
     private String description;
     private Double assessment;

@@ -1,5 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.web.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,4 +15,9 @@ public interface OptionMapper {
     Option optionDtoToOption(OptionDto optionDto);
 
     OptionDto optionToOptionDto(Option option);
+
+    List<Option> optionDtosToOptions(List<OptionDto> optionDto);
+
+    List<OptionDto> optionsToOptionDtos(List<Option> option);
+
 }
