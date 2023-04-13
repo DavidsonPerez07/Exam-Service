@@ -35,5 +35,5 @@ public class Question implements Serializable {
     @ManyToOne
     private Exam exam;
     @OneToMany
-    private Option option;
+    private Option options;
 }

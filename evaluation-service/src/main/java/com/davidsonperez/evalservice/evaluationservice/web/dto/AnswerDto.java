@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class AnswerDto implements Serializable {
     private Long answerId;
     private String openAnswer;
-    private Double asessment;
+    private Double assessment;
     private OptionDto option;
     private QuestionDto question;
 }

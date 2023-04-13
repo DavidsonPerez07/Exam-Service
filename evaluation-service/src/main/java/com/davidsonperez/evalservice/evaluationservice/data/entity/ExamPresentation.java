@@ -33,5 +33,5 @@ public class ExamPresentation implements Serializable {
     private Exam exam;
     @Column(nullable = false)
     @OneToMany
-    private Answer answer;
+    private Answer answers;
 }

@@ -20,5 +20,5 @@ public class QuestionDto {
     private QuestionType questionType;
     private String openAnswer;
     private ExamDto exam;
-    private List<OptionDto> option;
+    private List<OptionDto> options;
 }
