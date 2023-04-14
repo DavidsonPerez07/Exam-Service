@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class OptionDto implements Serializable {
-    private Long optionId;
+    private Long idOption;
     private String description;
     private Boolean isCorrect;
     private QuestionDto question;

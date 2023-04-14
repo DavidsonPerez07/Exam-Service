@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class QuestionDto implements Serializable {
-    private Long questionId;
+    private Long idQuestion;
     private String description;
     private Double assessment;
     private QuestionType questionType;

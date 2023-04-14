@@ -18,11 +18,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "Option")
+@Table(name = "ExamOption")
 public class Option implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long optionId;
+    private Long idOption;
     @Column(nullable = false)
     private String description;
     private Boolean isCorrect;

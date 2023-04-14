@@ -25,16 +25,14 @@ import lombok.NoArgsConstructor;
 public class ExamPresentation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long examPresentationId;
+    private Long idExamPresentation;
     @Column(nullable = false)
     private Double score;
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "student")
     private Student student;
     @Column(nullable = false)
     private Exam exam;
-    @Column(nullable = false)
     @OneToMany
     private List<Answer> answers;
 }

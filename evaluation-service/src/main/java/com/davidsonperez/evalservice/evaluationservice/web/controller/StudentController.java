@@ -12,7 +12,7 @@ import com.davidsonperez.evalservice.evaluationservice.web.dto.StudentDto;
 @RestController
 @RequestMapping("student")
 public class StudentController {
-    /*private StudentService studentService;
+    private StudentService studentService;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -31,5 +31,5 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(resp);
-    }*/
+    }
 }

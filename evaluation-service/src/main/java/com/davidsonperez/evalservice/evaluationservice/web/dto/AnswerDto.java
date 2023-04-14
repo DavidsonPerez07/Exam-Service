@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class AnswerDto implements Serializable {
-    private Long answerId;
+    private Long idAnswer;
     private String openAnswer;
     private Double assessment;
     private List<OptionDto> options;

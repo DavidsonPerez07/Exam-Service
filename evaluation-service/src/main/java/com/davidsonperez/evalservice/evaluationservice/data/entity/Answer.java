@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Answer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long answerId;
+    private Long idAnswer;
     private String openAnswer;
     @Column(nullable = false)
     private Double assessment;

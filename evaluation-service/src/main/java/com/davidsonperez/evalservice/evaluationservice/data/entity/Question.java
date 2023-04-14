@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long questionId;
+    private Long idQuestion;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
@@ -32,7 +32,6 @@ public class Question implements Serializable {
     @Column(nullable = false)
     private QuestionType questionType;
     private String openAnswer;
-    @Column(nullable = false)
     @ManyToOne
     private Exam exam;
     @OneToMany

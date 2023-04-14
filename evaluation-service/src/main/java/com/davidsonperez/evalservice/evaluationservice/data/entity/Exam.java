@@ -23,14 +23,13 @@ import lombok.NoArgsConstructor;
 public class Exam implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long examId;
+    private Long idExam;
     @Column(nullable = false)
     private String introduction;
     @Column(nullable = false)
     private Double maxScore;
     @Column(nullable = false)
     private String examLink;
-    @Column(nullable = false)
     @OneToMany
     private List<Question> questions;
 }

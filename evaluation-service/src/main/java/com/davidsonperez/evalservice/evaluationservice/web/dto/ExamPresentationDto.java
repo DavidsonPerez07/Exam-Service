@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class ExamPresentationDto implements Serializable {
-    private Long examPresentationId;
+    private Long idExamPresentation;
     private Double score;
     private StudentDto student;
     private ExamDto exam;

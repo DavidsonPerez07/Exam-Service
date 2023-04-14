@@ -1,5 +1,3 @@
-USE exam_service;
-
 CREATE TABLE Student (
   id_student BIGINT NOT NULL,
   id_card VARCHAR(45) NOT NULL,
