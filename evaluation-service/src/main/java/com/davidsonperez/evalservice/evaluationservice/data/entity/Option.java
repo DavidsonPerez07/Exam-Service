@@ -35,5 +35,8 @@ public class Option implements Serializable {
 =======
     @ManyToOne
     private Answer answer;
+<<<<<<< HEAD
 >>>>>>> e160c4a (.)
+=======
+>>>>>>> e160c4ad74e8f5985b4280034fd882a9361843a2
 }
