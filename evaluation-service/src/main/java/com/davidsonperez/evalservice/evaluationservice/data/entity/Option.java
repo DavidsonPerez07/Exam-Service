@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,16 +19,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "Option")
+@Table(name = "examoption")
 public class Option implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long optionId;
-    @Column(nullable = false)
+    private Long idOption;
+    @Column(name = "option_description", nullable = false)
     private String description;
     private Boolean isCorrect;
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "question")
     private Question question;
     @ManyToOne
+    @JoinColumn(name = "answer")
     private Answer answer;
 }

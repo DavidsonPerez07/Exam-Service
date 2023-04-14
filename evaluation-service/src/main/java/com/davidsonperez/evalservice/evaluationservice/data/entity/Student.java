@@ -24,7 +24,7 @@ public class Student implements Serializable {
     private Long idStudent;
     @Column(nullable = false)
     private String idCard;
-    @Column(nullable = false)
+    @Column(name = "student_name", nullable = false)
     private String name;
     @Column(nullable = false)
     private String email;

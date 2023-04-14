@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,12 +25,16 @@ import lombok.NoArgsConstructor;
 public class Answer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long answerId;
+    private Long idAnswer;
     private String openAnswer;
     @Column(nullable = false)
     private Double assessment;
-    @OneToMany
+    @OneToMany(mappedBy = "answer")
     private List<Option> options;
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "question")
     private Question question;
+    @ManyToOne
+    @JoinColumn(name = "id_exam_presentation")
+    private ExamPresentation presentation;
 }

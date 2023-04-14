@@ -9,7 +9,7 @@ import com.davidsonperez.evalservice.evaluationservice.web.mapper.StudentMapper;
 
 @Service
 public class StudentService {
-    /*private StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -32,5 +32,5 @@ public class StudentService {
         Student eStudent = StudentMapper.INSTANCE.studentDtoToStudent(studentDto);
         eStudent = studentRepository.save(eStudent);
         return StudentMapper.INSTANCE.studentToStudentDto(eStudent);
-    }*/
+    }
 }

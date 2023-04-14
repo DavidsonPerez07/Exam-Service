@@ -21,20 +21,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "ExamPresentation")
+@Table(name = "exampresentation")
 public class ExamPresentation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long examPresentationId;
+    private Long idExamPresentation;
     @Column(nullable = false)
     private Double score;
-    @Column(nullable = false)
+
     @ManyToOne
     @JoinColumn(name = "student")
     private Student student;
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "exam")
     private Exam exam;
     @Column(nullable = false)
-    @OneToMany
+    @OneToMany(mappedBy = "presentation")
     private List<Answer> answers;
 }
