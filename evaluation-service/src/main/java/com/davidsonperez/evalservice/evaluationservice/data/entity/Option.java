@@ -29,6 +29,11 @@ public class Option implements Serializable {
     private Boolean isCorrect;
     @Column(nullable = false)
     private Question question;
+<<<<<<< HEAD
     @OneToMany
     private List<Answer> answers;
+=======
+    @ManyToOne
+    private Answer answer;
+>>>>>>> e160c4a (.)
 }

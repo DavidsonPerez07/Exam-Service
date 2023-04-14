@@ -1,5 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.web.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,4 +15,8 @@ public interface AnswerMapper {
     Answer answerDtoToAnswer(AnswerDto answerDto);
     
     AnswerDto answerToAnswerDto(Answer answer);
+
+    List<Answer> answerDtosToAnswers(List<AnswerDto> answerDtos);
+    
+    List<AnswerDto> answersToAnswerDtos(List<Answer> answers);
 }

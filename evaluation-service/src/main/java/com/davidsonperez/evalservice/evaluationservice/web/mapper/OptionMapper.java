@@ -16,8 +16,14 @@ public interface OptionMapper {
 
     OptionDto optionToOptionDto(Option option);
 
+<<<<<<< HEAD
     List<Option> optionDtosToOptions(List<OptionDto> optionDto);
 
     List<OptionDto> optionsToOptionDtos(List<Option> option);
 
+=======
+    List<Option> optionDtosToOptions(List<OptionDto> optionDtos);
+
+    List<OptionDto> optionsToOptionDtos(List<Option> options);
+>>>>>>> e160c4a (.)
 }
