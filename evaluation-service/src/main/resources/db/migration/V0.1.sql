@@ -19,7 +19,7 @@ CREATE TABLE Question (
   id_question BIGINT NOT NULL,
   question_description VARCHAR(1000) NOT NULL,
   assessment DOUBLE NOT NULL,
-	question_type ENUM('ONLY_ANSWER', 'MULTI_ANSWER', 'OPEN_ANSWER') NOT NULL,
+	question_type INTEGER NOT NULL,
   open_answer VARCHAR(1000),
   exam BIGINT NOT NULL,
   id_option BIGINT NOT NULL,
@@ -45,31 +45,11 @@ CREATE TABLE Exam (
     ON UPDATE CASCADE
     );
 
-CREATE TABLE Answer (
-  id_answer BIGINT NOT NULL,
-  open_answer VARCHAR(1000),
-  assessment DOUBLE NOT NULL,
-  id_option BIGINT NOT NULL,
-  question BIGINT NOT NULL,
-  PRIMARY KEY (id_answer),
-  CONSTRAINT fk_Answer_Option
-    FOREIGN KEY (id_option)
-    REFERENCES ExamOption (id_option)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT fk_Answer_Question
-    FOREIGN KEY (question)
-    REFERENCES Question (id_question)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-    );
-
 CREATE TABLE ExamPresentation (
   id_exam_presentation BIGINT NOT NULL,
   score DOUBLE NOT NULL,
   student BIGINT NOT NULL,
   exam BIGINT NOT NULL,
-  answer BIGINT NOT NULL,
   PRIMARY KEY (id_exam_presentation),
   CONSTRAINT fk_ExamPresentation_Student
     FOREIGN KEY (student)
@@ -80,10 +60,30 @@ CREATE TABLE ExamPresentation (
     FOREIGN KEY (exam)
     REFERENCES Exam (id_exam)
     ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );
+
+CREATE TABLE Answer (
+  id_answer BIGINT NOT NULL,
+  open_answer VARCHAR(1000),
+  assessment DOUBLE NOT NULL,
+  id_option BIGINT NOT NULL,
+  question BIGINT NOT NULL,
+  id_exam_presentation BIGINT NOT NULL,
+  PRIMARY KEY (id_answer),
+  CONSTRAINT fk_Answer_Option
+    FOREIGN KEY (id_option)
+    REFERENCES ExamOption (id_option)
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT fk_ExamPresentation_Answer
-    FOREIGN KEY (answer)
-    REFERENCES Answer (id_answer)
+  CONSTRAINT fk_Answer_Question
+    FOREIGN KEY (question)
+    REFERENCES Question (id_question)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_Answer_Presentation
+    FOREIGN KEY (id_exam_presentation)
+    REFERENCES ExamPresentation (id_exam_presentation)
     ON DELETE CASCADE
     ON UPDATE CASCADE
     );

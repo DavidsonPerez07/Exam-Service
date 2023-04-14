@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,8 +29,12 @@ public class Answer implements Serializable {
     private String openAnswer;
     @Column(nullable = false)
     private Double assessment;
-    @OneToMany
+    @OneToMany(mappedBy = "answer")
     private List<Option> options;
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "question")
     private Question question;
+    @ManyToOne
+    @JoinColumn(name = "id_exam_presentation")
+    private ExamPresentation presentation;
 }

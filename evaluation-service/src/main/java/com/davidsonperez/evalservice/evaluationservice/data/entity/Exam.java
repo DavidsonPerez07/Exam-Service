@@ -30,6 +30,7 @@ public class Exam implements Serializable {
     private Double maxScore;
     @Column(nullable = false)
     private String examLink;
-    @OneToMany
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "exam")
     private List<Question> questions;
 }

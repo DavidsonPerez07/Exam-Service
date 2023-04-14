@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "ExamPresentation")
+@Table(name = "exampresentation")
 public class ExamPresentation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +31,10 @@ public class ExamPresentation implements Serializable {
     @ManyToOne
     @JoinColumn(name = "student")
     private Student student;
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "exam")
     private Exam exam;
-    @OneToMany
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "presentation")
     private List<Answer> answers;
 }
