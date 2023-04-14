@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class StudentDto implements Serializable {
-    private Long id;
+    private Long idStudent;
     private String idCard;
     private String name;
     private String email;

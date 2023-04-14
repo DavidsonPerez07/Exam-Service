@@ -14,20 +14,7 @@ public interface QuestionMapper {
     
     QuestionDto questionToQuestionDto(Question question);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    List<Question> questionDtosToQuestions(List<QuestionDto> questionDto);
+    List<Question> questionDtosToQuestions(List<QuestionDto> questionDtos);
 
-    List<QuestionDto> questionsToQuestionDtos(List<Question> question);
-
-=======
-    List<Question> questioDtosToQuestions(List<QuestionDto> questionDtos);
-    
     List<QuestionDto> questionsToQuestionDtos(List<Question> questions);
->>>>>>> e160c4a (.)
-=======
-    List<Question> questioDtosToQuestions(List<QuestionDto> questionDtos);
-    
-    List<QuestionDto> questionsToQuestionDtos(List<Question> questions);
->>>>>>> e160c4ad74e8f5985b4280034fd882a9361843a2
 }

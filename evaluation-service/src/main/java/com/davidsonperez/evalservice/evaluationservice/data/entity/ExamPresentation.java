@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +30,7 @@ public class ExamPresentation implements Serializable {
     private Double score;
     @Column(nullable = false)
     @ManyToOne
-    @JoinColumn(name = "Student_id_student")
+    @JoinColumn(name = "student")
     private Student student;
     @Column(nullable = false)
     private Exam exam;

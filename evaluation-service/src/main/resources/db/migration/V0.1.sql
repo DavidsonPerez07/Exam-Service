@@ -1,4 +1,3 @@
-CREATE DATABASE exam_service;
 USE exam_service;
 
 CREATE TABLE Student (
