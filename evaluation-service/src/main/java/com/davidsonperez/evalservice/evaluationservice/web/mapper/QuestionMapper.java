@@ -1,5 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.web.mapper;
 
+import java.util.List;
+
 import org.mapstruct.factory.Mappers;
 
 import com.davidsonperez.evalservice.evaluationservice.data.entity.Question;
@@ -11,4 +13,8 @@ public interface QuestionMapper {
     Question questioDtoToQuestion(QuestionDto questionDto);
     
     QuestionDto questionToQuestionDto(Question question);
+
+    List<Question> questioDtosToQuestions(List<QuestionDto> questionDtos);
+    
+    List<QuestionDto> questionsToQuestionDtos(List<Question> questions);
 }

@@ -29,5 +29,5 @@ public class Option implements Serializable {
     @Column(nullable = false)
     private Question question;
     @ManyToOne
-    private Answer answers;
+    private Answer answer;
 }
