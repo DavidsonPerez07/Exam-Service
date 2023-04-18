@@ -18,4 +18,5 @@ public class AnswerDto implements Serializable {
     private Double assessment;
     private List<OptionDto> options;
     private QuestionDto question;
+    private ExamPresentationDto presentation;
 }

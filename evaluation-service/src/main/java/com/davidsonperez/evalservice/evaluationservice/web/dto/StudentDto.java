@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class StudentDto implements Serializable {
-    private Long idStudent;
+    private Long id_student;
     private String idCard;
     private String name;
     private String email;
     
     public Long getIdStudent() {
-        return idStudent;
+        return id_student;
     }
-    public void setIdStudent(Long idStudent) {
-        this.idStudent = idStudent;
+    public void setIdStudent(Long id_student) {
+        this.id_student = id_student;
     }
     public String getIdCard() {
         return idCard;

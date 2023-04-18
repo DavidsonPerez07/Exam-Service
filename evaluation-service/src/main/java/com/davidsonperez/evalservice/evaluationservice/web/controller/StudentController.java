@@ -18,7 +18,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping()
+    @PostMapping("/saveStudent")
     public ResponseEntity<?> insertStudent(@RequestBody StudentDto studentDto) throws Exception {
         if (studentDto == null) {
             return ResponseEntity.badRequest().body("Datos del estudiante inválidos");

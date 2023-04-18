@@ -67,4 +67,14 @@ public class ExamService {
 
         return OptionMapper.INSTANCE.optionsToOptionDtos(options);
     }
+
+    public OptionDto saveOption(OptionDto optionDto) throws Exception {
+        if (optionDto == null) {
+            throw new Exception("Parámetro no válido");
+        }
+        
+        Option eOption = OptionMapper.INSTANCE.optionDtoToOption(optionDto);
+        eOption = optionRepository.save(eOption);
+        return OptionMapper.INSTANCE.optionToOptionDto(eOption);
+    }
 }

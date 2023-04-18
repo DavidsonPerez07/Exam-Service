@@ -73,4 +73,20 @@ public class ExamController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(resp);
     }
+
+    @PostMapping("/saveOption")
+    public ResponseEntity<?> insertOption(@RequestBody OptionDto optionDto) throws Exception {
+        if (optionDto == null) {
+            return ResponseEntity.badRequest().body("Datos de la opción inválidos");
+        }
+
+        OptionDto resp;
+        try {
+            resp = examService.saveOption(optionDto);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
+    }
 }

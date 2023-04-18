@@ -67,12 +67,12 @@ CREATE TABLE Answer (
   id_answer BIGINT NOT NULL,
   open_answer VARCHAR(1000),
   assessment DOUBLE NOT NULL,
-  id_option BIGINT NOT NULL,
+  idOption BIGINT NOT NULL,
   question BIGINT NOT NULL,
   id_exam_presentation BIGINT NOT NULL,
   PRIMARY KEY (id_answer),
   CONSTRAINT fk_Answer_Option
-    FOREIGN KEY (id_option)
+    FOREIGN KEY (idOption)
     REFERENCES ExamOption (id_option)
     ON DELETE CASCADE
     ON UPDATE CASCADE,

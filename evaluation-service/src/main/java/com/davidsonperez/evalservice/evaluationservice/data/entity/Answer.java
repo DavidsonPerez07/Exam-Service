@@ -21,10 +21,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "Answer")
+@Table(name = "answer")
 public class Answer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "id_answer")
     private Long idAnswer;
     private String openAnswer;
     @Column(nullable = false)
