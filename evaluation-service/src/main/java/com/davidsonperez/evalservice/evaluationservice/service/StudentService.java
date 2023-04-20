@@ -1,5 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.davidsonperez.evalservice.evaluationservice.data.entity.Student;
@@ -10,6 +12,8 @@ import com.davidsonperez.evalservice.evaluationservice.web.mapper.StudentMapper;
 @Service
 public class StudentService {
     private StudentRepository studentRepository;
+    private Student student;
+    private StudentDto studentDto;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -32,5 +36,13 @@ public class StudentService {
         Student eStudent = StudentMapper.INSTANCE.studentDtoToStudent(studentDto);
         eStudent = studentRepository.save(eStudent);
         return StudentMapper.INSTANCE.studentToStudentDto(eStudent);
+    }
+
+    public StudentDto findOne(Long id) {
+        student = new Student();
+        studentDto = new StudentDto();
+        student = studentRepository.findStudentById(id);
+
+        return studentDto = StudentMapper.INSTANCE.studentToStudentDto(student);
     }
 }
