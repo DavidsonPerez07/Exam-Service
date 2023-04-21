@@ -25,7 +25,7 @@ public class StudentServiceTest {
         studentRepository = Mockito.mock(StudentRepository.class);
         studentService = new StudentService(studentRepository);
         Student studentMock = new Student();
-        studentMock.setId_student(1L);
+        studentMock.setIdStudent(1L);
         studentMock.setIdCard("12345");
         studentMock.setName("Nelson");
         studentMock.setEmail("nelson123@gmail.com");    
@@ -38,19 +38,14 @@ public class StudentServiceTest {
         Student resulted = new Student(1L, "12345", "Nelson", "nelson123@gmail.com");
         when(studentRepository.save(any(Student.class))).thenReturn(resulted);
         
-        //input
         StudentDto student = new StudentDto(null, "12345", "NELSON", "nelson123@gmail.com");
 
-        //target
         StudentService instance = new StudentService(studentRepository);
 
-        //expected
         StudentDto expResult = new StudentDto(1L, "12345", "Nelson", "nelson123@gmail.com");
 
-        //test
         StudentDto result = instance.saveStudent(student);
 
-        //validations
         assertEquals(expResult.getIdStudent(), result.getIdStudent());
         assertEquals(expResult.getName(), result.getName());
     }

@@ -23,7 +23,7 @@ public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "id_student")
-    private Long id_student;
+    private Long idStudent;
     @Column(nullable = false)
     private String idCard;
     @Column(name = "student_name", nullable = false)

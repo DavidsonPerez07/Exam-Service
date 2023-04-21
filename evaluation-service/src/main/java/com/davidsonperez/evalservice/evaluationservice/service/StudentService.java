@@ -13,7 +13,6 @@ import com.davidsonperez.evalservice.evaluationservice.web.mapper.StudentMapper;
 public class StudentService {
     private StudentRepository studentRepository;
     private Student student;
-    private StudentDto studentDto;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -38,11 +37,10 @@ public class StudentService {
         return StudentMapper.INSTANCE.studentToStudentDto(eStudent);
     }
 
-    public StudentDto findOne(Long id) {
+    public StudentDto findOne(Long idStudent) {
         student = new Student();
-        studentDto = new StudentDto();
-        student = studentRepository.findStudentById(id);
+        student = studentRepository.findOne(idStudent);
 
-        return studentDto = StudentMapper.INSTANCE.studentToStudentDto(student);
+        return StudentMapper.INSTANCE.studentToStudentDto(student);
     }
 }
