@@ -1,6 +1,6 @@
 package com.davidsonperez.evalservice.evaluationservice.web.mapper;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -16,5 +16,5 @@ public interface StudentMapper {
     
     StudentDto studentToStudentDto(Student student);
 
-    StudentDto studentOptToStudentDto(Optional<Student> student);
+    List<StudentDto> studentsToStudentDtos(List<Student> students);
 }

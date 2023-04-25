@@ -1,5 +1,6 @@
 package com.davidsonperez.evalservice.evaluationservice.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -12,7 +13,6 @@ import com.davidsonperez.evalservice.evaluationservice.web.mapper.StudentMapper;
 @Service
 public class StudentService {
     private StudentRepository studentRepository;
-    private Student student;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -37,10 +37,42 @@ public class StudentService {
         return StudentMapper.INSTANCE.studentToStudentDto(eStudent);
     }
 
-    public StudentDto findOne(Long idStudent) {
-        student = new Student();
-        student = studentRepository.findOne(idStudent);
+    public StudentDto getStudent(Long idStudent) {
+        Optional<Student> student;
+        student = studentRepository.findById(idStudent);
 
-        return StudentMapper.INSTANCE.studentToStudentDto(student);
+        StudentDto studentDto = new StudentDto();
+
+        if(student.isPresent()) {
+            studentDto.setIdStudent(student.get().getIdStudent());
+            studentDto.setIdCard(student.get().getIdCard());
+            studentDto.setName(student.get().getName());
+            studentDto.setEmail(student.get().getEmail());
+        }
+        else {
+            studentDto = null;
+        }
+
+        return studentDto;
+    }
+
+    public List<StudentDto> getAllStudents() {
+        List<Student> students; 
+        students = studentRepository.findAll();
+
+        return StudentMapper.INSTANCE.studentsToStudentDtos(students);
+    }
+
+    public boolean deleteStudent(Long idStudent) {
+        Boolean exists = studentRepository.existsById(idStudent);
+
+        if (exists) {
+            studentRepository.deleteById(idStudent);
+        }
+        else {
+            return false;
+        }
+
+        return exists;
     }
 }

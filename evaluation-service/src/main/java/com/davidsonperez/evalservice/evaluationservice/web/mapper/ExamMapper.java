@@ -13,4 +13,5 @@ public interface ExamMapper {
     Exam examDtoToExam(ExamDto examDto);
     
     ExamDto examToExamDto(Exam exam);
+    
 }

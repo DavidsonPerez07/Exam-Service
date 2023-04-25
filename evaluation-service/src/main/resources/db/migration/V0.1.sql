@@ -1,5 +1,5 @@
 CREATE TABLE Student (
-  id_student BIGINT NOT NULL,
+  id_student BIGINT NOT NULL AUTO_INCREMENT,
   id_card VARCHAR(45) NOT NULL,
   student_name VARCHAR(100),
   email VARCHAR(100) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE Student (
   );
 
 CREATE TABLE ExamOption (
-  id_option BIGINT NOT NULL,
+  id_option BIGINT NOT NULL  AUTO_INCREMENT,
   option_description VARCHAR(1000) NOT NULL,
   is_correct BOOLEAN NOT NULL,
   question BIGINT NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE ExamOption (
   );
 
 CREATE TABLE Question (
-  id_question BIGINT NOT NULL,
+  id_question BIGINT NOT NULL AUTO_INCREMENT,
   question_description VARCHAR(1000) NOT NULL,
   assessment DOUBLE NOT NULL,
 	question_type INTEGER NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE Question (
     );
 
 CREATE TABLE Exam (
-  id_exam BIGINT NOT NULL,
+  id_exam BIGINT NOT NULL AUTO_INCREMENT,
   introduction VARCHAR(1000),
   max_score DOUBLE NOT NULL,
   exam_link VARCHAR(500) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE Exam (
     );
 
 CREATE TABLE ExamPresentation (
-  id_exam_presentation BIGINT NOT NULL,
+  id_exam_presentation BIGINT NOT NULL AUTO_INCREMENT,
   score DOUBLE NOT NULL,
   student BIGINT NOT NULL,
   exam BIGINT NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE ExamPresentation (
     );
 
 CREATE TABLE Answer (
-  id_answer BIGINT NOT NULL,
+  id_answer BIGINT NOT NULL AUTO_INCREMENT,
   open_answer VARCHAR(1000),
   assessment DOUBLE NOT NULL,
   idOption BIGINT NOT NULL,

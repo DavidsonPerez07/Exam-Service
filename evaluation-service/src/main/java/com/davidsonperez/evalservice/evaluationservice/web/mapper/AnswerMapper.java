@@ -19,4 +19,5 @@ public interface AnswerMapper {
     List<Answer> answerDtosToAnswers(List<AnswerDto> answerDtos);
     
     List<AnswerDto> answersToAnswerDtos(List<Answer> answers);
+    
 }

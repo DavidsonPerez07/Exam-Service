@@ -1,10 +1,15 @@
 package com.davidsonperez.evalservice.evaluationservice.web.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.davidsonperez.evalservice.evaluationservice.service.StudentService;
 import com.davidsonperez.evalservice.evaluationservice.web.dto.StudentDto;
@@ -31,5 +36,37 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(resp);
+    }
+
+    @GetMapping("/getStudent")
+    public ResponseEntity<?> showStudent(@RequestParam Long idStudent) {
+        StudentDto resp;
+        resp = studentService.getStudent(idStudent);
+
+        if(resp == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Este estudiante no existe");
+        }
+
+        return ResponseEntity.ok(resp);
+    }
+
+    @GetMapping("/getAllStudents")
+    public ResponseEntity<?> showAllStudents() {
+        List<StudentDto> studentDtos = studentService.getAllStudents();
+
+        return ResponseEntity.ok(studentDtos);
+    }
+
+    @DeleteMapping("/deleteStudent")
+    public ResponseEntity<?> deleteStudent(@RequestParam Long idStudent) {
+        Boolean resp;
+
+        resp = studentService.deleteStudent(idStudent);
+
+        if (resp == false) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Este estudiante no existe");
+        }
+
+        return ResponseEntity.ok("Estudiante eliminado");
     }
 }

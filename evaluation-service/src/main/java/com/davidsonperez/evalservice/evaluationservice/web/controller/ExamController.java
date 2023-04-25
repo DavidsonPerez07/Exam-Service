@@ -22,7 +22,7 @@ public class ExamController {
         this.examService = examService;
     }
 
-    @PostMapping()
+    @PostMapping("/saveExam")
     public ResponseEntity<?> insertExam(@RequestBody ExamDto examDto) throws Exception {
         if (examDto == null) {
             return ResponseEntity.badRequest().body("Datos del examen inválidos");
