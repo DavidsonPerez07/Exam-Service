@@ -10,7 +10,7 @@ import com.davidsonperez.evalservice.evaluationservice.web.dto.QuestionDto;
 public interface QuestionMapper {
     QuestionMapper INSTANCE = Mappers.getMapper(QuestionMapper.class);
 
-    Question questioDtoToQuestion(QuestionDto questionDto);
+    Question questionDtoToQuestion(QuestionDto questionDto);
     
     QuestionDto questionToQuestionDto(Question question);
 

@@ -36,7 +36,7 @@ CREATE TABLE Exam (
   introduction VARCHAR(1000),
   max_score DOUBLE NOT NULL,
   exam_link VARCHAR(500) NOT NULL,
-  question BIGINT NOT NULL,
+  question BIGINT,
   PRIMARY KEY (id_exam),
   CONSTRAINT fk_Exam_Question
     FOREIGN KEY (question)

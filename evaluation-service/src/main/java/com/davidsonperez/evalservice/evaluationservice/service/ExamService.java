@@ -1,6 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -34,46 +35,73 @@ public class ExamService {
         if (examDto == null) {
             throw new Exception("Parámetro no válido");
         }
-        
+
         Exam eExam = ExamMapper.INSTANCE.examDtoToExam(examDto);
         eExam = examRepository.save(eExam);
         return ExamMapper.INSTANCE.examToExamDto(eExam);
     }
 
-    public List<QuestionDto> saveQuestions(List<QuestionDto> questionDtos) throws Exception {
-        List<Question> questions = QuestionMapper.INSTANCE.questionDtosToQuestions(questionDtos);
+    public ExamDto getExam(Long idExam) {
+        Optional<Exam> exam;
+        exam = examRepository.findById(idExam);
 
-        for (int i = 0; i < questions.size(); i++) {
-            if (questions.get(i) == null) {
-                throw new Exception("Parámetro no válido");
-            }
+        ExamDto examDto = new ExamDto();
 
-            questionRepository.save(questions.get(i));
+        if (exam.isPresent()) {
+            examDto = ExamMapper.INSTANCE.examToExamDto(exam.get());
         }
-        
-        return QuestionMapper.INSTANCE.questionsToQuestionDtos(questions);
-    }
-
-    public List<OptionDto> saveOptions(List<OptionDto> optionDtos) throws Exception {
-        List<Option> options = OptionMapper.INSTANCE.optionDtosToOptions(optionDtos);
-
-        for (int i = 0; i < options.size(); i++) {
-            if (options.get(i) == null) {
-                throw new Exception("Parámetro no válido");
-            }
-
-            optionRepository.save(options.get(i));
+        else {
+            examDto = null;
         }
 
-        return OptionMapper.INSTANCE.optionsToOptionDtos(options);
+        return examDto;
     }
 
-    public OptionDto saveOption(OptionDto optionDto) throws Exception {
+    public QuestionDto saveQuestion(QuestionDto questionDto) throws Exception {
+        if (questionDto == null) {
+            throw new Exception("Parámetro no válido");
+        }
+
+        Optional<Exam> exam = examRepository.findById(1L);
+        ExamDto examDto = new ExamDto();
+
+        if (exam.isPresent()) {
+            examDto = ExamMapper.INSTANCE.examToExamDto(exam.get());
+        }
+        else {
+            examDto = null;
+        }
+
+        questionDto.setExam(examDto);
+
+        Question eQuestion = QuestionMapper.INSTANCE.questionDtoToQuestion(questionDto);
+        questionRepository.save(eQuestion);
+        return QuestionMapper.INSTANCE.questionToQuestionDto(eQuestion);
+    }
+
+    public OptionDto saveOption(OptionDto optionDto, Long idQuestion) throws Exception {
         if (optionDto == null) {
             throw new Exception("Parámetro no válido");
         }
         
+        Optional<Question> question = questionRepository.findById(idQuestion);
+        Question eQuestion = new Question();
+
+        if (question.isPresent()) {
+            eQuestion.setIdQuestion(question.get().getIdQuestion());
+            eQuestion.setDescription(question.get().getDescription());
+            eQuestion.setAssessment(question.get().getAssessment());
+            eQuestion.setQuestionType(question.get().getQuestionType());
+            eQuestion.setOpenAnswer(question.get().getOpenAnswer());
+            eQuestion.setExam(question.get().getExam());
+            eQuestion.setOptions(question.get().getOptions());
+        }
+        else {
+            eQuestion = null;
+        }
+
         Option eOption = OptionMapper.INSTANCE.optionDtoToOption(optionDto);
+        eOption.setQuestion(eQuestion);
         eOption = optionRepository.save(eOption);
         return OptionMapper.INSTANCE.optionToOptionDto(eOption);
     }
