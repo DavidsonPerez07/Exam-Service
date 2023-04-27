@@ -63,18 +63,9 @@ public class ExamService {
         }
 
         Optional<Exam> exam = examRepository.findById(1L);
-        ExamDto examDto = new ExamDto();
-
-        if (exam.isPresent()) {
-            examDto = ExamMapper.INSTANCE.examToExamDto(exam.get());
-        }
-        else {
-            examDto = null;
-        }
-
-        questionDto.setExam(examDto);
 
         Question eQuestion = QuestionMapper.INSTANCE.questionDtoToQuestion(questionDto);
+        eQuestion.setExam(exam.orElse(null));
         questionRepository.save(eQuestion);
         return QuestionMapper.INSTANCE.questionToQuestionDto(eQuestion);
     }
