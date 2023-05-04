@@ -15,6 +15,4 @@ public class OptionDto implements Serializable {
     private Long idOption;
     private String description;
     private Boolean isCorrect;
-    private QuestionDto question;
-    private AnswerDto answer;
 }

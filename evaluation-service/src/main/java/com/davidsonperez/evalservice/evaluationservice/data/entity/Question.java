@@ -32,10 +32,11 @@ public class Question implements Serializable {
     private Double assessment;
     @Column(nullable = false)
     private QuestionType questionType;
-    private String openAnswer;
+    
     @ManyToOne
-    @JoinColumn(name = "exam")
+    @JoinColumn(name = "id_exam")
     private Exam exam;
+    
     @OneToMany(mappedBy = "question")
     private List<Option> options;
 }

@@ -19,7 +19,5 @@ public class QuestionDto implements Serializable {
     private String description;
     private Double assessment;
     private QuestionType questionType;
-    private String openAnswer;
-    private ExamDto exam;
     private List<OptionDto> options;
 }

@@ -1,6 +1,5 @@
 package com.davidsonperez.evalservice.evaluationservice.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -36,22 +35,34 @@ public class ExamService {
             throw new Exception("Parámetro no válido");
         }
 
-        Exam eExam = ExamMapper.INSTANCE.examDtoToExam(examDto);
-        eExam = examRepository.save(eExam);
-        return ExamMapper.INSTANCE.examToExamDto(eExam);
+        final Exam eExam =  examRepository.save(ExamMapper.INSTANCE.examDtoToExam(examDto));
+
+        examDto.getQuestions().forEach(q -> {
+            final Question question = QuestionMapper.INSTANCE.questionDtoToQuestion(q);
+            question.setExam(eExam);
+            questionRepository.save(question);
+
+            if(q.getOptions() != null) {
+                q.getOptions().forEach(o -> {
+                    Option option = OptionMapper.INSTANCE.optionDtoToOption(o);
+                    option.setQuestion(question);
+                    optionRepository.save(option);
+                });
+            }
+        });
+
+
+        return getExam(eExam.getIdExam());
     }
 
     public ExamDto getExam(Long idExam) {
         Optional<Exam> exam;
         exam = examRepository.findById(idExam);
 
-        ExamDto examDto = new ExamDto();
+        ExamDto examDto = null;
 
         if (exam.isPresent()) {
             examDto = ExamMapper.INSTANCE.examToExamDto(exam.get());
-        }
-        else {
-            examDto = null;
         }
 
         return examDto;
@@ -83,7 +94,6 @@ public class ExamService {
             eQuestion.setDescription(question.get().getDescription());
             eQuestion.setAssessment(question.get().getAssessment());
             eQuestion.setQuestionType(question.get().getQuestionType());
-            eQuestion.setOpenAnswer(question.get().getOpenAnswer());
             eQuestion.setExam(question.get().getExam());
             eQuestion.setOptions(question.get().getOptions());
         }

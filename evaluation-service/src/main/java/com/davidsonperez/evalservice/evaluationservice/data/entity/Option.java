@@ -27,10 +27,8 @@ public class Option implements Serializable {
     @Column(name = "option_description", nullable = false)
     private String description;
     private Boolean isCorrect;
+    
     @ManyToOne
-    @JoinColumn(name = "question")
+    @JoinColumn(name = "id_question")
     private Question question;
-    @ManyToOne
-    @JoinColumn(name = "answer")
-    private Answer answer;
 }

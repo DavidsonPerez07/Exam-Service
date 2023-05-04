@@ -28,13 +28,15 @@ public class ExamPresentation implements Serializable {
     private Long idExamPresentation;
     @Column(nullable = false)
     private Double score;
+    
     @ManyToOne
-    @JoinColumn(name = "student")
+    @JoinColumn(name = "id_student")
     private Student student;
+    
     @ManyToOne
-    @JoinColumn(name = "exam")
+    @JoinColumn(name = "id_exam")
     private Exam exam;
-    @Column(nullable = false)
-    @OneToMany(mappedBy = "presentation")
+
+    @OneToMany(mappedBy = "examPresentation")
     private List<Answer> answers;
 }
