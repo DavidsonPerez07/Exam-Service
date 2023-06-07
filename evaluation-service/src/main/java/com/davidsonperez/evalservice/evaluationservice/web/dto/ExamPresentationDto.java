@@ -15,13 +15,7 @@ import lombok.NoArgsConstructor;
 public class ExamPresentationDto implements Serializable {
     private Long idExamPresentation;
     private Double score;
-<<<<<<< HEAD
     private Long studentId;
     private Long examId;
     private List<AnswerDto> answers; 
-=======
-    private StudentDto student;
-    private ExamDto exam;
-    private List<AnswerDto> answers;
->>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 }

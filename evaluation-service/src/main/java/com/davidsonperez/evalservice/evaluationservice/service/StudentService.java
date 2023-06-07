@@ -44,14 +44,7 @@ public class StudentService {
         StudentDto studentDto = new StudentDto();
 
         if(student.isPresent()) {
-<<<<<<< HEAD
             studentDto = StudentMapper.INSTANCE.studentToStudentDto(student.get());
-=======
-            studentDto.setIdStudent(student.get().getIdStudent());
-            studentDto.setIdCard(student.get().getIdCard());
-            studentDto.setName(student.get().getName());
-            studentDto.setEmail(student.get().getEmail());
->>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
         }
         else {
             studentDto = null;
@@ -79,7 +72,6 @@ public class StudentService {
 
         return exists;
     }
-<<<<<<< HEAD
 
     public boolean editStudent(Long idStudent, StudentDto updateStudent) {
         Boolean exists = studentRepository.existsById(idStudent);
@@ -97,6 +89,4 @@ public class StudentService {
 
         return exists;
     }
-=======
->>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 }

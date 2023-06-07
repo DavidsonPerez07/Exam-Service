@@ -1,10 +1,7 @@
 package com.davidsonperez.evalservice.evaluationservice.web.mapper;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
->>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -19,8 +16,5 @@ public interface ExamPresentationMapper {
 
     ExamPresentationDto examPresentationToExamPresentationDto(ExamPresentation examPresentation);
     
-<<<<<<< HEAD
     List<ExamPresentationDto> presentationsTopresentationDtos(List<ExamPresentation> examPresentations);
-=======
->>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 }
