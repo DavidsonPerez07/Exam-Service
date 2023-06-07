@@ -4,11 +4,17 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+=======
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+>>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +24,10 @@ import com.davidsonperez.evalservice.evaluationservice.web.dto.StudentDto;
 
 @RestController
 @RequestMapping("student")
+<<<<<<< HEAD
 @CrossOrigin(origins = "http://localhost:4200")
+=======
+>>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 public class StudentController {
     private StudentService studentService;
 
@@ -70,6 +79,7 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Este estudiante no existe");
         }
 
+<<<<<<< HEAD
         return ResponseEntity.ok().build();
     }
 
@@ -84,5 +94,8 @@ public class StudentController {
         }
 
         return ResponseEntity.ok().build();
+=======
+        return ResponseEntity.ok("Estudiante eliminado");
+>>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
     }
 }
