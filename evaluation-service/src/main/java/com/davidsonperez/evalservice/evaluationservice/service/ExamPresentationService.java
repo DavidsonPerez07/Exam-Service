@@ -1,5 +1,6 @@
 package com.davidsonperez.evalservice.evaluationservice.service;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,10 +13,17 @@ import com.davidsonperez.evalservice.evaluationservice.data.entity.Exam;
 import com.davidsonperez.evalservice.evaluationservice.data.entity.ExamPresentation;
 import com.davidsonperez.evalservice.evaluationservice.data.entity.Option;
 import com.davidsonperez.evalservice.evaluationservice.data.entity.Student;
+=======
+import org.springframework.stereotype.Service;
+
+import com.davidsonperez.evalservice.evaluationservice.data.entity.Answer;
+import com.davidsonperez.evalservice.evaluationservice.data.entity.ExamPresentation;
+>>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 import com.davidsonperez.evalservice.evaluationservice.data.repository.AnswerRepository;
 import com.davidsonperez.evalservice.evaluationservice.data.repository.ExamPresentationRepository;
 import com.davidsonperez.evalservice.evaluationservice.data.repository.ExamRepository;
 import com.davidsonperez.evalservice.evaluationservice.data.repository.OptionRepository;
+<<<<<<< HEAD
 import com.davidsonperez.evalservice.evaluationservice.data.repository.StudentRepository;
 import com.davidsonperez.evalservice.evaluationservice.web.dto.ExamPresentationDto;
 import com.davidsonperez.evalservice.evaluationservice.web.mapper.AnswerMapper;
@@ -129,4 +137,35 @@ public class ExamPresentationService {
 
         return ExamPresentationMapper.INSTANCE.presentationsTopresentationDtos(examPresentations);
     }
+=======
+import com.davidsonperez.evalservice.evaluationservice.data.repository.QuestionRepository;
+import com.davidsonperez.evalservice.evaluationservice.data.repository.StudentRepository;
+import com.davidsonperez.evalservice.evaluationservice.web.dto.ExamPresentationDto;
+
+@Service
+public class ExamPresentationService {
+    private ExamPresentationRepository examPresentationRepository;
+    private ExamRepository examRepository;
+    private AnswerRepository answerRepository;
+    private QuestionRepository questionRepository;
+    private OptionRepository optionRepository;
+    private StudentRepository studentRepository;
+    
+    public ExamPresentationService(ExamPresentationRepository examPresentationRepository, ExamRepository examRepository, 
+    AnswerRepository answerRepository, QuestionRepository questionRepository, OptionRepository optionRepository, 
+    StudentRepository studentRepository) {
+        this.examPresentationRepository = examPresentationRepository;
+        this.examRepository = examRepository;
+        this.answerRepository = answerRepository;
+        this.questionRepository = questionRepository;
+        this.optionRepository = optionRepository;
+        this.studentRepository = studentRepository;
+    }
+
+    /*public ExamPresentationDto takeExam(ExamPresentationDto examPresentationDto) throws Exception{
+        if (examPresentationDto == null) {
+            throw new Exception("Parámetro no válido");
+        }
+    }*/
+>>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
 }

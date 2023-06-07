@@ -44,8 +44,13 @@ CREATE TABLE Student (
 CREATE TABLE ExamPresentation (
   id_exam_presentation BIGINT NOT NULL AUTO_INCREMENT,
   score DOUBLE NOT NULL,
+<<<<<<< HEAD
   id_student BIGINT,
   id_exam BIGINT,
+=======
+  id_student BIGINT NOT NULL,
+  id_exam BIGINT NOT NULL,
+>>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
   PRIMARY KEY (id_exam_presentation),
   CONSTRAINT fk_ExamPresentation_Student
     FOREIGN KEY (id_student)
@@ -63,7 +68,11 @@ CREATE TABLE Answer (
   id_answer BIGINT NOT NULL AUTO_INCREMENT,
   open_answer VARCHAR(1000),
   assessment DOUBLE NOT NULL,
+<<<<<<< HEAD
   id_question BIGINT,
+=======
+  id_question BIGINT NOT NULL,
+>>>>>>> 94d946e40a3448eadd9de50de2fec81ce4757f89
   id_exam_presentation BIGINT NOT NULL,
   PRIMARY KEY (id_answer),
   CONSTRAINT fk_Answer_Question
